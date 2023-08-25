@@ -1,3 +1,23 @@
+sub Ejm01()
+'_&
+msgbox(" mi prim mavro")
+End Sub
+'
+dub Ejm02()
+"--
+msgbox("nom apellidos " _
+      & vbcr & " @---" _
+      & vbcr & "16697321")
+
+End sub
+'
+sub Ejm03()
+'--
+inoutbox("lng un valor:")
+end sub
+'
+
+
 Sub RegistrarFecha()
   ' Registrar fecha actual en la hoja 2, celda A1
     Sheets("Hoja2").Range("A1") = Date
