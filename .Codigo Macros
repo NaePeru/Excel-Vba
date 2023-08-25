@@ -1,28 +1,26 @@
-sub Ejm01()
-'_&
-msgbox(" mi prim mavro")
+Sub Ejm01()
+  ' Macro que permita mostrar informacion
+  Msgbox(" MI PRIMERA MARO")
 End Sub
 '
-dub Ejm02()
-"--
-msgbox("nom apellidos " _
-      & vbcr & " @---" _
+Sub Ejm02()
+  ' Macro que muestre datos personales
+  Msgbos("Apellidos, Nombre " _
+      & vbcr & " Solucionew@gmail.com" _
       & vbcr & "16697321")
-
+'
 End sub
 '
-sub Ejm03()
-'--
-inoutbox("lng un valor:")
-end sub
+Sub Ejm03()
+  ' Macro que permita el ingreso de datos
+  Inputbox("INGRESE UN VALOR::")
+End sub
 '
-
-
 Sub RegistrarFecha()
   ' Registrar fecha actual en la hoja 2, celda A1
     Sheets("Hoja2").Range("A1") = Date
 End Sub
-
+'
 Sub SeleccionarCelda()
   Sheets("Hoja2").Range("A5").Select  ' Selecciona una celda de otra hoja
   Sheets("Hoja2").Range("C:C").Select ' Selecciona una columna
