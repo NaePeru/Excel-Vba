@@ -1,20 +1,17 @@
 Sub RegistrarFecha()
   ' Registrar fecha actual en la hoja 2, celda A1
-   Sheets("Hoja2").Range("A1") = Date
+    Sheets("Hoja2").Range("A1") = Date
 End Sub
 
 Sub SeleccionarCelda()
- 'Sheets("Hoja2").Range("A5").Select  ' Selecciona una celda de otra hoja
- 'Sheets("Hoja2").Range("C:C").Select ' Selecciona una columna
- 'Seleccion de fila
- 'Range("5:5").Select
- 
- ' Seleccion de la celda activa
- 'ActiveCell.EntireRow.Select
+  Sheets("Hoja2").Range("A5").Select  ' Selecciona una celda de otra hoja
+  Sheets("Hoja2").Range("C:C").Select ' Selecciona una columna
+  Range("5:5").Select   'Seleccion de fila
+  ActiveCell.EntireRow.Select   'Seleccion de la celda activa
  'Rows("3:3").Select
  'Seleccion de filas y columnas
  ' encontrar ultima fila
- Dim uf, uf2 As Integer
+  Dim uf, uf2 As Integer
   uf = Cells(Rows.Count, "a").End(xlUp).Row ' se desplaza hacia arriba
   MsgBox uf
  '
@@ -27,44 +24,34 @@ Sub SeleccionarCelda()
     '
     Sheets("Data").Activate  ' pueden estar varias leccionadas,
                              ' pero la hoja Data es la unica activa
-    
-   
-    
 End Sub
 
 Sub Caso2()
    '(1) Seleccion rango de celdas
     ' Cells.Select ' seleciona toda la hoja
-     
     '(2) Selecciona un rango establecido
      Range("A1:D10").Select
-     
-    
     '(3) Selecciona una rango de celdas que contenga informacion
      Range("a1").Select
      Selection.CurrentRegion.Select
-    
-     
-    
+    '(4) other mejorado
+      Worksheets("Data").Range("A1").CurrentRegion.select
 End Sub
 
 Sub Calculos()
   ' Calculos con funciones matemticas y estadisticas
-  
- ' Range("B2") = WorksheetFunction.Sum(Range("A5:a9"))
- ' Range("d2") = WorksheetFunction.Average(Range("a5:A9"))
- ' Range("c2") = WorksheetFunction.Count(Range("A5:A9"))
- ' Range("e2") = WorksheetFunction.Max(Range("a5:a9"))
+   Range("B2") = WorksheetFunction.Sum(Range("A5:a9"))
+   Range("d2") = WorksheetFunction.Average(Range("a5:A9"))
+   Range("c2") = WorksheetFunction.Count(Range("A5:A9"))
+   Range("e2") = WorksheetFunction.Max(Range("a5:a9"))
   '
   ' Que permita actualizar el ingreso de mas datos
   Dim uf As Integer
    uf = Range("a5").End(xlDown).Row
    Range("B2") = WorksheetFunction.Sum(Range("A5:c" & uf))
-  
-
 End Sub
 
-
+======================================
 Sub insertRegCeldas()
   Dim dni As String, nombre As String
   On Error GoTo catch
@@ -94,6 +81,59 @@ Sub insertRegCeldas()
 catch:
    MsgBox "hola"
    
+End Sub
+
+'----------
+Sub Menu()
+  dim opt  as string
+  opt= Aplication.cal---
+  if opt= uno then
+    sheet("Hoja2").select
+  endif
+  if opt = dos then 
+     sheet("Hoja3").select
+  endif
+end Sub
+'----------
+Sub MENU()
+  'Menu de opciones principal
+  op = Application.InputBox("ELIGE UNA OPCION" _
+  & vbCr & "--------------------------------------" _
+  & vbCr & "[1].- TRABAJAR CON ARCHIVOS" _
+  & vbCr & "[2].- ACTUALIZAR EL TIEMPO" _
+  & vbCr & "[3].- REGISTRAR ALUMNOS " _
+  & vbCr & "[4].- INSERTAR NUEVA HOJAS " _
+  & vbCr & "[5].- ABRIR ARCHIVO ALUMNOS" _
+  & vbCr & "[6].- MAS OPCIONES" _
+  & vbCr & "--------------------------------------" _
+    , "Solucionew@gmail.com ---", vbYesNo)
+      Select Case op
+            Case 1:  '------
+            Case 2:  '------
+            Case 3:  '------
+            Case 4:  Call InsertarHojas
+            Case 5:  Call CopiarDatos
+            Case 6:  Call MENU2
+            Case 7:  '------
+            Case Else: MsgBox ("!Opción on Existe")
+      End Select
+End Sub
+
+Sub MENU2()
+  'menu de opciones other ----
+  op = Application.InputBox("vba Condicionales" _
+  & vbCr & "--------------------------------------" _
+  & vbCr & "[1].- LOGICA If Then Else" _
+  & vbCr & "[2].- With end With" _
+  & vbCr & "[3].- RETORNAR " _
+  & vbCr & "--------------------------------------" _
+    , "Solucionew@gmail.com", vbYesNo)
+      Select Case op
+            Case 1:  Call comision
+            Case 2:  '------
+            Case 3:  Call MENU
+            Case Else: MsgBox ("!Opción on Existe")
+      End Select
 End Sub
 
 
