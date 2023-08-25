@@ -1,1 +1,109 @@
+Sub RegistrarFecha()
+  ' Registrar fecha actual en la hoja 2, celda A1
+   Sheets("Hoja2").Range("A1") = Date
+End Sub
+
+Sub SeleccionarCelda()
+ 'Sheets("Hoja2").Range("A5").Select  ' Selecciona una celda de otra hoja
+ 'Sheets("Hoja2").Range("C:C").Select ' Selecciona una columna
+ 'Seleccion de fila
+ 'Range("5:5").Select
+ 
+ ' Seleccion de la celda activa
+ 'ActiveCell.EntireRow.Select
+ 'Rows("3:3").Select
+ 'Seleccion de filas y columnas
+ ' encontrar ultima fila
+ Dim uf, uf2 As Integer
+  uf = Cells(Rows.Count, "a").End(xlUp).Row ' se desplaza hacia arriba
+  MsgBox uf
+ '
+  uf2 = Range("A1").End(xlDown).Row ' se desplaza hacia abajo
+  MsgBox uf2
+  
+  ' hacer refencia a una hoja
+    Sheets("Data").Select
+    Hoja1.Select
+    '
+    Sheets("Data").Activate  ' pueden estar varias leccionadas,
+                             ' pero la hoja Data es la unica activa
+    
+   
+    
+End Sub
+
+Sub Caso2()
+   '(1) Seleccion rango de celdas
+    ' Cells.Select ' seleciona toda la hoja
+     
+    '(2) Selecciona un rango establecido
+     Range("A1:D10").Select
+     
+    
+    '(3) Selecciona una rango de celdas que contenga informacion
+     Range("a1").Select
+     Selection.CurrentRegion.Select
+    
+     
+    
+End Sub
+
+Sub Calculos()
+  ' Calculos con funciones matemticas y estadisticas
+  
+ ' Range("B2") = WorksheetFunction.Sum(Range("A5:a9"))
+ ' Range("d2") = WorksheetFunction.Average(Range("a5:A9"))
+ ' Range("c2") = WorksheetFunction.Count(Range("A5:A9"))
+ ' Range("e2") = WorksheetFunction.Max(Range("a5:a9"))
+  '
+  ' Que permita actualizar el ingreso de mas datos
+  Dim uf As Integer
+   uf = Range("a5").End(xlDown).Row
+   Range("B2") = WorksheetFunction.Sum(Range("A5:c" & uf))
+  
+
+End Sub
+
+
+Sub insertRegCeldas()
+  Dim dni As String, nombre As String
+  On Error GoTo catch
+  dni = Worksheets("Insert").Range("dni")
+  nombre = Worksheets("insert").Range("nombre")
+  If dni = "" Or nombre = "" Then
+    MsgBox "Deberias llenar las celdas"
+    Exit Sub
+  End If
+  'validar dni duplicados
+  contar = WorksheetFunction.CountIf(Sheets("Data").Columns(1), dni)
+  If contar > 0 Then
+     MsgBox "Dni ya existe"
+     Exit Sub
+  End If
+  Set fila = ThisWorkbook.Worksheets("Data").Range("A1").CurrentRegion
+  nfila = fila.Rows.Count + 1
+  'Otra forma mas corta
+  'nfila = ThisWorkbook.Worksheets("data").Range("A1").CurrentRegion.Rows.Count + 1
+     '''
+   With ThisWorkbook.Worksheets("Data")
+    .Cells(nfila, 1).Value = dni
+    .Cells(nfila, 2).Value = nombre
+   End With
+   MsgBox "Alumn regitrado"
+   Exit Sub
+catch:
+   MsgBox "hola"
+   
+End Sub
+
+
+
+
+
+
+
+
+
+
+
 
