@@ -91,8 +91,11 @@ Sub insertRegCeldas()
   End If
   Set fila = ThisWorkbook.Worksheets("Data").Range("A1").CurrentRegion
   nfila = fila.Rows.Count + 1
-  'Otra forma mas corta
-  'nfila = ThisWorkbook.Worksheets("data").Range("A1").CurrentRegion.Rows.Count + 1
+  
+   'Otra forma mas corta
+   'Busca el número total de filas en el rango de datos actual que rodea la celda A1
+   'en la hoja "data" y luego agrega 1 para obtener la siguiente fila vacía
+   'nfila = ThisWorkbook.Worksheets("data").Range("A1").CurrentRegion.Rows.Count + 1
      '''
    With ThisWorkbook.Worksheets("Data")
     .Cells(nfila, 1).Value = dni
