@@ -1,16 +1,14 @@
 
 Sub Ejm01()
   ' Macro que permita mostrar informacion
-  Msgbox(" MI PRIMERA MARO")
-  ' other 
+  Msgbox(" MI PRIMERA MACRO")
 End Sub
 '
 Sub Ejm02()
   ' Macro que muestre datos personales
-  Msgbos("Apellidos, Nombre " _
+  Msgbox("Apellidos, Nombre " _
       & vbcr & " Solucionew@gmail.com" _
       & vbcr & "16697321")
-'
 End sub
 '
 Sub Ejm03()
@@ -60,16 +58,19 @@ Sub Caso2()
       Worksheets("Data").Range("A1").CurrentRegion.select
 End Sub
 
-Sub Calculos()
+Sub CalculosFunciones()
   ' Calculos con funciones matemticas y estadisticas
    Range("B2") = WorksheetFunction.Sum(Range("A5:a9"))
    Range("d2") = WorksheetFunction.Average(Range("a5:A9"))
    Range("c2") = WorksheetFunction.Count(Range("A5:A9"))
    Range("e2") = WorksheetFunction.Max(Range("a5:a9"))
-  '
-  ' Que permita actualizar el ingreso de mas datos
-  Dim uf As Integer
-   uf = Range("a5").End(xlDown).Row
+  
+End Sub
+'
+Sub ActulizarDatos()
+  ' Macro que  permita actualizar la suma de un rango de datos
+   Dim uf As Integer
+   uf = Range("a5").End(xlDown).Row ' muestra la ultima fila que cont datos
    Range("B2") = WorksheetFunction.Sum(Range("A5:c" & uf))
 End Sub
 
